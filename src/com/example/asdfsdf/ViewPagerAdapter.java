@@ -12,8 +12,11 @@ import android.view.View;
  * @since 1.0
  */
 public class ViewPagerAdapter extends FragmentPagerAdapter {
+    int id = R.id.pager;
+    private FragmentManager fragmentManager;
     public ViewPagerAdapter(FragmentManager fm) {
         super(fm);
+        this.fragmentManager = fm;
     }
 
     @Override
@@ -29,5 +32,9 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     @Override
     public boolean isViewFromObject(View view, Object object) {
         return ((Fragment) object).getView() == view;
+    }
+
+    private String getFragmentTag(int position) {
+        return "android:switcher:" + id + ":" + position;
     }
 }
